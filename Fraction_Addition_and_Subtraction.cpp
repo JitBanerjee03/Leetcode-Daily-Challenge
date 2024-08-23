@@ -1,3 +1,4 @@
+//LeetCode 592
 #include<iostream>
 #include<bits/stdc++.h>
 
@@ -8,8 +9,25 @@ public:
     string fractionAddition(string expression) {
         int i=0,numerator=0,denominator=1;
         bool isnegative;
+        
+        if(expression[i]>='0' && expression[i]<='9'){  //checking if the first fraction is not a negative fraction
+            int tempNumerator=0,tempDenominator=0;
+            while(i<expression.length() && expression[i]>='0' && expression[i]<='9'){
+                tempNumerator=tempNumerator*10+(expression[i]-'0');
+                i++;
+            }
 
-        while(i<expression.length()){
+            i++;
+            while(i<expression.length() && expression[i]>='0' && expression[i]<='9'){
+                tempDenominator=tempDenominator*10+(expression[i]-'0');
+                i++;
+            }
+
+            numerator=tempNumerator;
+            denominator=tempDenominator;
+        }
+
+        while(i<expression.length()){  //loop to  find the numerator and the denominator
             
             int tempNumerator=0,tempDenominator=0;
 
